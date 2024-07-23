@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Box</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .message-box {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            text-align: center;
+            max-width: 300px;
+            margin: auto;
+        }
+        .message-box h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+        .message-box input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .message-box button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .accept {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .accept:hover {
+            background-color: #45a049;
+        }
+        .decline {
+            background-color: #f44336;
+            color: white;
+        }
+        .decline:hover {
+            background-color: #da190b;
+        }
+    </style>
+</head>
+<body>
+    <div class="message-box">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAMAAABC4vDmAAAAaVBMVEX///8AAAD7+/v19fXi4uLe3t74+PjBwcHS0tLX19e+vr6Dg4NQUFASEhIZGRnu7u51dXU4ODhvb2+Xl5fLy8uMjIzo6OhnZ2e4uLhdXV2enp6ysrIoKChVVVWnp6cfHx9JSUlCQkIxMTExmVLyAAAFCUlEQVR4nO1b27aiMAxVuSmIiFhQ8IL+/0eOJi0yjhfaJrhmre5HpYdtmu6kSc5k4uDg4ODg4ODg4OBgjlnpz5taJImom7lfzn7N54ZFvcnTaYc03xTznxKaLYoenx7E4mf2mm9eMgJU299QuryndEc+/i7OkmcSh8PzJ8nIexj3fOmYNAsPP/aCJjn2aO3G5FQ/TluhCCl4i2LVfV2MRims1Dv38esnon33hPf6CWp4a2Wl3ds3hrGyVpWNwSlUp0589uNCPnYdwVahtFP6ZuceiKSxNvyspGC25fdHs6X0K25OjZSBAZwmk1L6+4mX0xy3pA2HPT5D0Up5Y06OnPyhz5e4gwdOTifcjsGcJhMfV9R8nPyDvougE64CLk4TDMKV3iKUkDUPo5uD4FZoSrSnveVaQI0Wustqs2XDkEF8yQcpVB8lrLvyxMCt6S9GC0f0jG6oTDzqDvSqIz2jG86weyYrQUFTjriMu2eU4EZs+weHKDW6oizAyBypMSjn0ugMhZAtrOkvNx784Y3ZYlD1I71TZbnFFsDWr7QV7itKm3QtZoo0mIMYZmsBK6mFzWL69MXqx5Y2Zv4Aqx+Li+nLMAQ+Rb99vnmUUSGK3tFLm1CBFw56ncpai1QbQlROn+bN4L6+H3gLfQKEqMps7UcISGqNnNXPubL0nXlShH7eUDO6IUuNnQpcKmW5ZMGlZGqSFMHCKzmhOxrTTcCN5yknYABbaqdqmHcy6DkgMRN1vDZsmCr9eIjOusuwpvW1RGoKrMtphhosJbQcfADSVFqZnn8217dhQK8667jHdWoRMwchgzdMk+ErxJQpa+mh0WQlOTHXrGWvaKASysLtnrvxhz4y7A4uG5UH9mYkFiuGdFxmsouzGqGdjJeA76d8q5pro/SSu1be+kMqGSaqoTtSyzboWtjFm7tA2fVz9ZTWitVFvTNPXihQmeTq+8tonCbduQJeRRR0+xgG2+Ly+E5DZSkQnR+vnl6X+3UiRLLeL6+9j783T6kRvhlzeUCM1Gj/C+U/Qxx9rFnD3RuEkcg/kbqKeGxLZfVHRoj8nWKwIBDfGSGSsSShTFb99x7y5aaO4+0NcVxvlvlf00HpKyEjx+zUf+dS7IKnYBP6u6I/GTQ9sScJwcOXVm2dvYl+YVa3D3NemfeweBhAfIn+857jMbVFAX43gZQPUUav6My6Z+u2zzsXFgOLcllnLa4hjka9oNKQn7IbAGO5PHSnTjPMRmodQ9lFGJgJUapxUHJ3V6mk0Zik+kHEvVHFyTDhjjlYbeURMr4EqFE4wrRPcbJQ5kCyIlMG70LwMyNMVMnaDhXJj5xLbacJzw2RzJwI5Up6A8FtSVh7ZgeUvpYg4Za1a4KxT5SYlCTKy/qndZPGaylVD93qYnsC8c8sSShNZOPP1tdnK1rJm6Na2bUj0VCaQ5SfsLb3Bg+nbAlzWd/eq2IqiXpA2GQbAAgwZtNl77BILU8Ojh22VHwQeFE137+TtalfILJ0dVCVA/GMA46sHU2TBf9K7uZ3QK3NuGoc0USqZ+ysnAJO74p8QiWEsGzaAYQs+EJKCACKrN2KlqBXTkRhEf9KDkG4Ay9HZp4eU8c9BR9E3azgAVY+MBR4UanM/AKyjJbhvwBwDNns+AEpjvEwHFozStLY5rWtpsghb2EpoYK3mk2C308uz3hYdjDXmm3F1cVYiGr0XqCDg4ODg4ODg4PD/4E/4voxQyHoReoAAAAASUVORK5CYII=" alt="User Icon" style="width: 50px; height: 50px; border-radius: 50%;">
+        <h2>Ask Me a Question!</h2>
+        <input type="text" placeholder="Type something...">
+        <div>
+            <button class="accept" onclick="accept()">Accept</button>
+            <button class="decline" onclick="decline()">Decline</button>
+        </div>
+    </div>
+    
+    <script>
+        function accept() {
+            alert('You have accepted!');
+        }
+        
+        function decline() {
+            alert('You have declined!');
+        }
+    </script>
+</body>
+</html>
